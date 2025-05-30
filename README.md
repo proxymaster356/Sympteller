@@ -58,7 +58,7 @@ Sympteller/
     ```
 
 3️⃣ **Install Project Requirements:**
-    Navigate into the `graphql` directory where your Python dependencies are located, then install them:
+    Navigate into the directory where your Python dependencies are located , then install them:
     ```bash
     cd graphql
     pip install -r requirements.txt
