@@ -7,7 +7,7 @@ Sympteller is a hybrid AI-powered disease detection tool that intelligently anal
 
 ## ⚙️ How It Works
 
-```mermaid
+```
 graph TD
     A[User Inputs Symptoms] --> B{Internet Available?}
     B -- Yes --> C[Gemini Agent 1 + Agent 2]
@@ -16,6 +16,7 @@ graph TD
     D -- One Fails --> F[Use available Gemini answer]
     D -- Both Fail --> G[Use Mistral for full fallback]
     B -- No --> H[Offline Mistral Diagnosis Only]
+```
 
 🧠 Features
 ✅ Dual Gemini 2.5 API calls for higher reliability
