@@ -48,26 +48,24 @@ Sympteller/
 ## 🚀 Getting Started
 
 1️⃣ **Clone the repository:**
-    ```bash
+    ``` 
     git clone [https://github.com/proxymaster356/sympteller.git](https://github.com/proxymaster356/sympteller.git)
     ```
 
 2️⃣ **Navigate into the project directory:**
-    ```bash
+    ``` 
     cd sympteller
     ```
 
 3️⃣ **Install Project Requirements:**
     Navigate into the directory where your Python dependencies are located , then install them:
-    ```bash
-    cd graphql
-    pip install -r requirements.txt
+    ```pip install -r requirements.txt
     ```
 
 4️⃣ **Start Ollama with Mistral:**
     Make sure you have [Ollama](https://ollama.ai/download) installed on your system. Once installed, start the Mistral model by running:
  
-    ```bash
+    ``` 
     ollama run mistral     #to exit from mistral ollama use "/bye"
     ```
     This will download and run the Mistral model locally, which is crucial for the AI adjudication and offline fallback features.
@@ -77,7 +75,7 @@ Sympteller/
 
 5️⃣ **Run the Flask Backend:**
     start the Flask application:
-    ```bash
+    ```
     python app.py
     ```
    This will start the backend server, typically accessible at `http://127.0.0.1:5000` (or `localhost:5000`).
