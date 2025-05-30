@@ -100,7 +100,7 @@ or Directly open the index3.html to get the view
 ## 🙋‍♂️ Developer
 Debopam Dutta
 Student @ UEM Kolkata | Tech + AI Enthusiast
-Connect on [LinkedIn](https://www.linkedin.com/in/debopam-dutta-bb220b323/)] | [Instagram](https://www.instagram.com/dutta_debopam/)
+Connect on [LinkedIn](https://www.linkedin.com/in/debopam-dutta-bb220b323/)| [Instagram](https://www.instagram.com/dutta_debopam/)
 
 ---
 ## Ok !! Goodbye and Thank You! 👋
