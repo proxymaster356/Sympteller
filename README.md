@@ -17,7 +17,7 @@ graph TD
     D -- Both Fail --> G[Use Mistral for full fallback]
     B -- No --> H[Offline Mistral Diagnosis Only]
 
-🧠 **Features**
+🧠 Features
 ✅ Dual Gemini 2.5 API calls for higher reliability
 ✅ Smart voting via Ollama (Mistral) adjudication
 ✅ 100% Offline fallback when no internet
