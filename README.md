@@ -65,10 +65,10 @@ Sympteller/
 4️⃣ **Start Ollama with Mistral:**
     Make sure you have [Ollama](https://ollama.ai/download) installed on your system. Once installed, start the Mistral model by running:
  
-    ``` 
-    ollama run mistral     #to exit from mistral ollama use "/bye"
+    ```  ollama run mistral     
     ```
-    This will download and run the Mistral model locally, which is crucial for the AI adjudication and offline fallback features.
+   to exit from mistral ollama use "/bye" 
+This will download and run the Mistral model locally, which is crucial for the AI adjudication and offline fallback features.
 
 
 **to find out the mistral server http . Quit ollama, then in cmd type "ollama serve". It will show the address . IF not same, then change it with OLLAMA_BASE_URL = 'http://127.0.0.1:11434'. with cmd http address in Sympteller_code.py 
