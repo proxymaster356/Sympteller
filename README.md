@@ -64,8 +64,8 @@ Sympteller/
 
 4️⃣ **Start Ollama with Mistral:**
     Make sure you have [Ollama](https://ollama.ai/download) installed on your system. Once installed, start the Mistral model by running:
- 
-    ```  ollama run mistral     
+    ```  
+    ollama run mistral     
     ```
    to exit from mistral ollama use "/bye" 
 This will download and run the Mistral model locally, which is crucial for the AI adjudication and offline fallback features.
