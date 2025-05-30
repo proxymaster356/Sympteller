@@ -67,7 +67,8 @@ Sympteller/
     ```  
     ollama run mistral     
     ```
-   to exit from mistral ollama use "/bye" 
+   to exit from mistral ollama use 
+   ```/bye```
 This will download and run the Mistral model locally, which is crucial for the AI adjudication and offline fallback features.
 
 
