@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sympteller 💊 — AI Health Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Define CSS variables for easy theme management */
+        :root {
+            --bg-color: #0A0A0F; /* Dark background */
+            --card-bg: #1A1A22; /* Slightly lighter card background */
+            --text-color: #E0E0E0; /* Light grey text */
+            --accent-color: #00FFFF; /* Cyan/Aqua for accents */
+            --border-color: #333344; /* Darker border for subtle separation */
+            --success-color: #4CAF50; /* Green for success messages */
+            --error-color: #F44336; /* Red for error messages */
+            --glow-color: rgba(0, 255, 255, 0.4); /* Glow effect color */
+            --shadow-color: rgba(0, 0, 0, 0.6); /* General shadow color */
+            --muted-text-color: #888899; /* Muted color for user input */
+        }
+
+        /* Basic body styling */
+        body {
+            font-family: 'Inter', sans-serif; /* Use Inter font */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; /* Prevent scrollbars from background effects */
+        }
+
+        /* Main container for the application */
+        .container {
+            background-color: var(--card-bg);
+            border-radius: 15px; /* Rounded corners for the container */
+            padding: 40px;
+            box-shadow: 0 10px 30px var(--shadow-color); /* Deep shadow for depth */
+            width: 100%;
+            max-width: 90vw; /* Max width for readability */
+            text-align: center;
+            border: 1px solid var(--border-color); /* Subtle border */
+            position: relative;
+            z-index: 1; /* Ensure content is above background effects */
+            overflow: hidden; /* Hide overflowing background effects */
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(5px); /* Safari support */
+        }
+
+        /* Background pulsating light effect */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, var(--accent-color) 0%, transparent 70%);
+            opacity: 0.05;
+            animation: pulse-light 10s infinite alternate ease-in-out; /* Smooth pulsating animation */
+            z-index: -1; /* Behind the content */
+        }
+
+        /* Keyframe animation for the background light pulse */
+        @keyframes pulse-light {
+            0% { transform: scale(1); opacity: 0.05; }
+            100% { transform: scale(1.2); opacity: 0.1; }
+        }
+
+        /* Heading styling */
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            font-size: 2.5em; /* Larger font size */
+            text-shadow: 0 0 15px var(--glow-color); /* Text glow effect */
+            font-weight: 700; /* Bold heading */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Space between icons and text */
+        }
+
+        h1 .icon-pulse {
+            animation: iconPulse 1.5s infinite ease-in-out; /* Icon pulsating animation */
+        }
+
+        /* Keyframe animation for icon pulse */
+        @keyframes iconPulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        /* Input group styling */
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        /* Textarea styling */
+        textarea {
+            width: calc(100% - 30px); /* Full width with padding accounted for */
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px; /* More rounded corners */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1em;
+            resize: vertical; /* Allow vertical resizing */
+            min-height: 120px; /* Minimum height for textarea */
+            box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.15); /* Inner glow */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: inset 0 0 12px var(--glow-color), 0 0 12px var(--glow-color); /* Stronger glow on focus */
+        }
+
+        /* Button styling */
+        button {
+            background: linear-gradient(45deg, var(--accent-color), #00A0A0); /* Gradient background */
+            color: var(--bg-color); /* Dark text on light button */
+            border: none;
+            padding: 15px 35px;
+            border-radius: 10px; /* Rounded corners */
+            font-size: 1.2em;
+            font-weight: 600; /* Semi-bold */
+            cursor: pointer;
+            transition: all 0.3s ease; /* Smooth transitions for all properties */
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4); /* Stronger shadow */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Space between icon and text */
+            margin: 0 auto; /* Center the button */
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #00E0E0, #00B0B0); /* Slightly different gradient on hover */
+            transform: translateY(-3px) scale(1.02); /* Lift and slightly enlarge */
+            box-shadow: 0 12px 25px rgba(0, 255, 255, 0.6); /* Even stronger shadow */
+        }
+
+        button:active {
+            transform: translateY(0) scale(1); /* Return to original state on click */
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Diagnosis output area */
+        .diagnosis-output {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 35px;
+            text-align: left;
+            min-height: 60px; /* Minimum height for consistent layout */
+            display: flex;
+            flex-direction: column; /* Stack user input and AI diagnosis */
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: var(--success-color);
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(76, 255, 80, 0.3); /* Green glow for success */
+            max-height: 300px;
+            overflow-y: auto;
+            position: relative;
+            transition: all 0.5s ease; /* Smooth transition for display changes */
+        }
+
+        /* Styling for "You said: [input]" */
+        .user-input-display {
+            font-size: 0.9em; /* Smaller */
+            color: var(--muted-text-color); /* Muted color */
+            margin-bottom: 10px; /* Space between user input and AI diagnosis */
+            text-align: center;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        /* Styling for "AI Diagnosis: [response]" */
+        .diagnosis-result-text {
+            margin: 0;
+            word-wrap: break-word; /* Ensure long words wrap */
+            white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+            text-align: center; /* Center the diagnosis text */
+            font-size: 1.4em; /* Larger */
+            font-weight: 700; /* Bolder */
+            color: var(--success-color); /* Green for diagnosis */
+            text-shadow: 0 0 15px rgba(76, 255, 80, 0.7); /* Glowing effect */
+        }
+
+        /* Loading animation container */
+        .loading-animation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px; /* Match diagnosis output height */
+        }
+
+        /* Individual loading dots */
+        .loading-animation .dot {
+            width: 15px;
+            height: 15px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            margin: 0 8px;
+            animation: bounce 0.8s infinite alternate; /* Bounce animation */
+            box-shadow: 0 0 10px var(--glow-color); /* Glow on dots */
+        }
+
+        /* Stagger animation delays for dots */
+        .loading-animation .dot:nth-child(2) { animation-delay: 0.2s; }
+        .loading-animation .dot:nth-child(3) { animation-delay: 0.4s; }
+
+        /* Keyframe animation for dot bounce */
+        @keyframes bounce {
+            to { transform: translateY(-15px); }
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: var(--error-color);
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-shadow: 0 0 8px rgba(244, 67, 54, 0.4); /* Red glow for errors */
+        }
+
+        /* Fade-in animation for diagnosis result */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        /* Keyframe animation for fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer styling */
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                margin: 15px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 2em;
+                gap: 8px;
+            }
+            textarea {
+                min-height: 100px;
+                font-size: 1em;
+            }
+            button {
+                width: 100%; /* Full width button on small screens */
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
+            .diagnosis-output {
+                padding: 20px;
+                font-size: 1.1em;
+            }
+            .loading-animation .dot {
+                width: 12px;
+                height: 12px;
+                margin: 0 6px;
+            }
+            .diagnosis-result-text {
+                font-size: 1.2em; /* Adjust for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.6em;
+                flex-direction: column; /* Stack title elements */
+                gap: 5px;
+            }
+            h1 span {
+                display: block; /* Ensure span breaks line */
+            }
+            button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+            .diagnosis-output {
+                font-size: 1em;
+                min-height: 50px;
+            }
+            footer {
+                font-size: 0.75em;
+            }
+            .diagnosis-result-text {
+                font-size: 1.1em; /* Further adjust for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <i class="fas fa-stethoscope icon-pulse"></i>
+            Sympteller
+            <span style="color: white;">💊</span> Your AI Health Assistant
+            <i class="fas fa-robot icon-pulse"></i>
+        </h1>
+
+        <div class="input-group">
+            <textarea id="symptomsInput" placeholder="Enter symptoms (e.g., fever, cough, fatigue, headache, sore throat)..."></textarea>
+        </div>
+
+        <button id="diagnoseButton">
+            <i class="fas fa-microscope"></i> Analyze Symptoms
+        </button>
+
+        <div id="outputContainer" class="diagnosis-output" style="display: none;">
+            <p id="userInputDisplay" class="user-input-display"></p> <p id="diagnosisResult" class="diagnosis-result-text"></p> <div id="loadingDots" class="loading-animation" style="display: none;">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+        <footer>
+            <p>&copy; Developer: Debopam  <br> Powered by Advanced AI Models.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Get references to DOM elements
+        const symptomsInput = document.getElementById('symptomsInput');
+        const diagnoseButton = document.getElementById('diagnoseButton');
+        const outputContainer = document.getElementById('outputContainer');
+        const userInputDisplay = document.getElementById('userInputDisplay'); // New reference
+        const diagnosisResult = document.getElementById('diagnosisResult');
+        const loadingDots = document.getElementById('loadingDots');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // IMPORTANT: This URL needs to point to your Python backend API endpoint.
+        const API_ENDPOINT = 'http://127.0.0.1:5000/diagnose';
+
+        // Event listener for the diagnose button click
+        diagnoseButton.addEventListener('click', async () => {
+            const symptoms = symptomsInput.value.trim();
+
+            if (!symptoms) {
+                errorMessage.textContent = 'Please enter some symptoms to get a diagnosis.';
+                errorMessage.style.display = 'block';
+                outputContainer.style.display = 'none';
+                userInputDisplay.textContent = ''; // Clear user input display
+                diagnosisResult.textContent = '';
+                return;
+            }
+
+            // Reset previous states and show loading
+            errorMessage.style.display = 'none';
+            userInputDisplay.textContent = `You said: "${symptoms}"`; // Set user input display
+            diagnosisResult.textContent = '';
+            outputContainer.style.display = 'flex';
+            loadingDots.style.display = 'flex';
+            outputContainer.classList.remove('fade-in');
+
+            try {
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ symptoms: symptoms }),
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                diagnosisResult.textContent = `${data.diagnosis || "No specific diagnosis found."}`; // Prefix with "AI Diagnosis:"
+                outputContainer.classList.add('fade-in');
+
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = `Diagnosis failed: ${error.message}. Please ensure your backend is running and accessible.`;
+                errorMessage.style.display = 'block';
+                outputContainer.style.display = 'none';
+            } finally {
+                loadingDots.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
