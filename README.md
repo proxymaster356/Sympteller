@@ -36,11 +36,12 @@ graph LR
 
 ---
 ## 📂 Project Structure
-Project StructureYour project is organized as follows:.
-├── graphql/
-│   ├── Sympteller_code.py  # AI logic with Gemini + Mistral
-│   ├── app.py              # Flask API (POST /diagnose)
-│   ├── index3.html         # Frontend HTML interface (modern UI)
-│   └── requirements.txt    # Python dependencies (Flask, requests, CORS)
-└── README.md               # Main project documentation (this file)
+```graphql
+Sympteller/
+├── Sympteller_code.py   # AI logic integrating Gemini APIs + Mistral model
+├── app.py              # Flask backend API (POST /diagnose endpoint)
+├── index3.html         # Frontend HTML interface with modern UI design
+├── requirements.txt    # Python dependencies (Flask, requests, flask-cors, etc.)
+└── README.md           # Project documentation
+
 
