@@ -49,7 +49,7 @@ Sympteller/
 
 1️⃣ **Clone the repository:**
     ```bash
-    git clone [https://github.com/yourusername/sympteller.git](https://github.com/yourusername/sympteller.git)
+    git clone [https://github.com/proxymaster356/sympteller.git](https://github.com/proxymaster356/sympteller.git)
     ```
 
 2️⃣ **Navigate into the project directory:**
