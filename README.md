@@ -34,10 +34,8 @@ graph TD
 
 ---
 
-📂 Project Structure
+## 📂 Project Structure
 graphql
-Copy
-Edit
 /Sympteller
 ├── Sympteller_code.py       # AI logic with Gemini + Mistral
 ├── app.py                   # Flask API (POST /diagnose)
