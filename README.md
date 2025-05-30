@@ -88,7 +88,7 @@ This will download and run the Mistral model locally, which is crucial for the A
         ```
         *(This assumes `app.py` is set up to serve `index3.html` as its root or a specific route.)*
 
-or Directly open the index3.html to get the view
+or Directly open the ```index3.html``` to get the view
 
 --- 
 ## 🧠 Powered By
