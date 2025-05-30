@@ -89,6 +89,8 @@ Sympteller/
         ```
         *(This assumes `app.py` is set up to serve `index3.html` as its root or a specific route.)*
 
+or Directly open the index3.html to get the view
+
 --- 
 ## 🧠 Powered By
     🌐 Google Gemini 2.5
