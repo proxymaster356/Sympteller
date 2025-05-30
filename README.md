@@ -8,7 +8,7 @@ Sympteller is a hybrid AI-powered disease detection tool that intelligently anal
 ## ⚙️ How It Works
 
 ```mermaid
-graph TD
+graph LR
     A[User Inputs Symptoms] --> B{Internet Available?}
     B -- Yes --> C[Gemini Agent 1 + Agent 2]
     C --> D{Both Succeed?}
@@ -18,7 +18,8 @@ graph TD
     B -- No --> H[Offline Mistral Diagnosis Only]
 ```
 
-🧠 Features
+## 🧠 Features
+
 ✅ Dual Gemini 2.5 API calls for higher reliability
 ✅ Smart voting via Ollama (Mistral) adjudication
 ✅ 100% Offline fallback when no internet
@@ -33,9 +34,9 @@ graph TD
 
 
 ---
-
 ## 📂 Project Structure
 graphql
+
 /Sympteller
 ├── Sympteller_code.py       # AI logic with Gemini + Mistral
 ├── app.py                   # Flask API (POST /diagnose)
