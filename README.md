@@ -25,5 +25,22 @@ graph TD
 ✅ Flask backend + Beautiful animated HTML frontend
 ✅ Dark mode, glowing diagnosis cards, and responsive design
 
+---
 
-   
+## 🖼️ Frontend UI
+
+<img src="https://github.com/proxymaster356/Sympteller/blob/main/frontend_sample.png?raw=true" alt="Sympteller UI Screenshot" width="700">
+
+
+---
+
+📂 Project Structure
+graphql
+Copy
+Edit
+/Sympteller
+├── Sympteller_code.py       # AI logic with Gemini + Mistral
+├── app.py                   # Flask API (POST /diagnose)
+├── index3.html              # Frontend HTML interface (modern UI)
+├── requirements.txt         # Python dependencies (Flask, requests, CORS)
+└── README.md                # Project documentation
