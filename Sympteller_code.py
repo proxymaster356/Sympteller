@@ -3,8 +3,8 @@ import json
 import socket
 
 # ==== CONFIGURATION ====
-GEMINI_API_KEY_1 = 'AIzaSyB56uMJi1GGU8xWWZok4JvoD_ytunj5pUQ'
-GEMINI_API_KEY_2 = 'AIzaSyBoffbTe27tuJoUm62KCiSJSAHL9uOOQjI'
+GEMINI_API_KEY_1 = 'XYZ'#Change with Gemini api key_1    #use two differnent api keys 
+GEMINI_API_KEY_2 = 'ABC'#Change with gemini api key_2
 GEMINI_MODEL_NAME = "gemini-2.5-flash-preview-04-17"  # Change model 
 OLLAMA_BASE_URL = 'http://127.0.0.1:11434'
 OLLAMA_MODEL = 'mistral'
