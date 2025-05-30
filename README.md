@@ -72,7 +72,7 @@ Sympteller/
 This will download and run the Mistral model locally, which is crucial for the AI adjudication and offline fallback features.
 
 
-**to find out the mistral server http . Quit ollama, then in cmd type "ollama serve". It will show the address . IF not same, then change it with OLLAMA_BASE_URL = 'http://127.0.0.1:11434'. with cmd http address in Sympteller_code.py 
+**to find out the mistral server http . Quit ollama, then in cmd type ```ollama serve```. It will show the address . IF not same, then change this ```OLLAMA_BASE_URL = 'http://127.0.0.1:11434```. with cmd http address in ```Sympteller_code.py``` 
 
 5️⃣ **Run the Flask Backend:**
     start the Flask application:
