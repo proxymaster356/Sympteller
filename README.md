@@ -17,6 +17,7 @@ graph LR
     D -- Both Fail --> G[Use Mistral for full fallback]
     B -- No --> H[Offline Mistral Diagnosis Only]
 ```
+---
 
 ## 🧠 Features
 
@@ -35,11 +36,11 @@ graph LR
 
 ---
 ## 📂 Project Structure
-graphql
+Project StructureYour project is organized as follows:.
+├── graphql/
+│   ├── Sympteller_code.py  # AI logic with Gemini + Mistral
+│   ├── app.py              # Flask API (POST /diagnose)
+│   ├── index3.html         # Frontend HTML interface (modern UI)
+│   └── requirements.txt    # Python dependencies (Flask, requests, CORS)
+└── README.md               # Main project documentation (this file)
 
-/Sympteller
-├── Sympteller_code.py       # AI logic with Gemini + Mistral
-├── app.py                   # Flask API (POST /diagnose)
-├── index3.html              # Frontend HTML interface (modern UI)
-├── requirements.txt         # Python dependencies (Flask, requests, CORS)
-└── README.md                # Project documentation
